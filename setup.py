@@ -4,7 +4,7 @@ with open('README.md', 'r', encoding='utf-8') as fh:
     long_description = fh.read()
     
 with open('requirements.txt', 'r', encoding='utf-8') as fh:
-    requirements = [req.replace('\n', '') for req in list(fh.lines()) if len(req) >=1]
+    requirements = [req.replace('\n', '') for req in list(fh.readlines()) if len(req) >=1]
 
 setuptools.setup(
     name='PyppeSnap',
