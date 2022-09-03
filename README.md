@@ -24,11 +24,20 @@ Check it on [Pypi](https://pypi.org/project/PyppeSnap/).
 
 Common use with code below.
 
-```python
-from pyppesnap import get_snapshot_by_url
-url = 'https://www.google.com'
-print(get_snapshot_by_url(url))
+- Get image
 
+```python
+from pyppesnap import get_image_snapshot_by_url
+url = 'https://www.google.com'
+print(get_image_snapshot_by_url(url))
+```
+
+- Get PDF
+
+```python
+from pyppesnap import get_pdf_snapshot_by_url
+url = 'https://www.google.com'
+print(get_pdf_snapshot_by_url(url))
 ```
 
 > You need to give a valid URL like start with `http`, or Pyppeteer cannot navigate it.
