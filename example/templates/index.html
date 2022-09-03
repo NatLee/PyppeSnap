@@ -10,9 +10,10 @@
         placeholder
       />
     </div>
-    <button id="run" type="button">Run</button>
+    <button id="run_image" type="button">Get Image</button>
+    <button id="run_pdf" type="button">Get PDF</button>
     <br />
-    <img id="source" src="" alt="" />
+    <div id="source"></div>
   </body>
   <script
     src="https://code.jquery.com/jquery-3.4.1.js"
@@ -21,17 +22,41 @@
   ></script>
 
   <script language="javascript" type="text/javascript">
-    $("#run").click(function () {
+    $("#run_image").click(function () {
       var form_data = new FormData();
       form_data.append("web_address", $("#web_address").val());
       $.ajax({
         type: "POST",
-        url: "/get_web",
+        url: "/get_web_image",
         data: form_data,
         processData: false,
         contentType: false,
         success: (data) => {
-          $("#source").attr("src", "data:image/png;base64," + data);
+          var el = $('<img class="new_img"></div>').attr(
+            "src",
+            "data:image/png;base64," + data
+          );
+          $("#source").append(el);
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
+    });
+    $("#run_pdf").click(function () {
+      var form_data = new FormData();
+      form_data.append("web_address", $("#web_address").val());
+      $.ajax({
+        type: "POST",
+        url: "/get_web_pdf",
+        data: form_data,
+        processData: false,
+        contentType: false,
+        success: (data) => {
+          var el = $(
+            '<object class="new_pdf" style="width:100%;height:100%" type="application/pdf"></object>'
+          ).attr("data", "data:application/pdf;base64," + data);
+          $("#source").append(el);
         },
         error: (error) => {
           console.log(error);
