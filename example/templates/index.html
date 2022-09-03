@@ -1,0 +1,42 @@
+<html>
+  <body>
+    <div class="form-group">
+      <label for="web_address">Web Address</label>
+      <input
+        type="text"
+        class="form-control"
+        id="web_address"
+        value="https://www.google.com"
+        placeholder
+      />
+    </div>
+    <button id="run" type="button">Run</button>
+    <br />
+    <img id="source" src="" alt="" />
+  </body>
+  <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"
+  ></script>
+
+  <script language="javascript" type="text/javascript">
+    $("#run").click(function () {
+      var form_data = new FormData();
+      form_data.append("web_address", $("#web_address").val());
+      $.ajax({
+        type: "POST",
+        url: "/get_web",
+        data: form_data,
+        processData: false,
+        contentType: false,
+        success: (data) => {
+          $("#source").attr("src", "data:image/png;base64," + data);
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
+    });
+  </script>
+</html>
