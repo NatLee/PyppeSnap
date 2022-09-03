@@ -42,4 +42,25 @@ print(get_pdf_snapshot_by_url(url))
 
 > You need to give a valid URL like start with `http`, or Pyppeteer cannot navigate it.
 
-It can be used with web framworks to get a snapshot, check details in [./example](https://github.com/NatLee/PyppeSnap/tree/main/example).
+- CLI
+
+You can try CLI mode for testing.
+
+```bash
+pyppesnap --url https://www.google.com --type img
+```
+
+And the output here.
+
+```
+------------- Parameters ---------------
+URL: https://www.google.com
+Type: img
+--------------- Base64 ------------------
+iVBORw0KGgoAAAANSUhEUgAABkAAAAOECAYAAAD
+...
+CCAAAAAAAkM7/B83ojRnTa7oSAAAAAElFTkSuQmCC
+-------------------------------------
+```
+
+This tool can be used with web framworks to get a snapshot, check details in [./example](https://github.com/NatLee/PyppeSnap/tree/main/example).
